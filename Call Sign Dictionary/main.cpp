@@ -4,9 +4,9 @@
 using namespace std;
 
 int main(int argc, const char * argv[]) {
-    string dictionary, prefix;
+    string dictionary, dictionaryRowString, prefix;
     int length;
-    char dictionaryRow[100];
+    char dictionaryRowChar[100];
     
     cout << "What dictionary file would you like to use?" << endl;
     cin >> dictionary;
@@ -17,10 +17,11 @@ int main(int argc, const char * argv[]) {
     cout << "You want to generate a call sign from the file " << dictionary << " that is " << length << " characters long and has the prefix " << prefix << "." << endl;
     
     ifstream file(dictionary);
-    while(file.getline(dictionaryRow, 100)){
-        if (dictionaryRow[length] == '\0'){
-            if (string(dictionaryRow).substr(0,prefix.length()) == prefix){
-                cout << dictionaryRow << endl;
+    while(file.getline(dictionaryRowChar, 100)){
+        dictionaryRowString = string (dictionaryRowChar);
+        if (dictionaryRowString.length() == length){
+            if (dictionaryRowString.substr(0, prefix.length()) == prefix){
+                cout << dictionaryRowString << endl;
             }
         }
     }
