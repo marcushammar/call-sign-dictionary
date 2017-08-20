@@ -18,7 +18,9 @@ int main(int argc, const char * argv[]) {
     
     ifstream file(dictionary);
     while(file.getline(dictionaryRow, 100)){
-        cout << dictionaryRow << endl;
+        if (dictionaryRow[length] == '\0'){
+            cout << dictionaryRow << endl;
+        }
     }
     
     return 0;
