@@ -4,6 +4,8 @@
 
 using namespace std;
 
+bool correctCharacters(string);
+
 int main(int argc, const char * argv[]) {
     string dictionary, dictionaryRowString, prefix;
     int length;
@@ -25,10 +27,21 @@ int main(int argc, const char * argv[]) {
         if (dictionaryRowString.length() == length){
             transform(dictionaryRowString.begin(), dictionaryRowString.end(), dictionaryRowString.begin(), ::toupper);
             if (dictionaryRowString.substr(0, prefix.length()) == prefix){
-                cout << dictionaryRowString << endl;
+                if (correctCharacters(dictionaryRowString)){
+                    cout << dictionaryRowString << endl;
+                }
             }
         }
     }
     
     return 0;
+}
+
+bool correctCharacters(string word){
+    for (int i = 0; i < word.size(); i++){
+        if (word[i] < 'A' || word[i] > 'Z'){
+            return false;
+        }
+    }
+    return true;
 }
